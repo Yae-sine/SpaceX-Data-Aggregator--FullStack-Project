@@ -48,12 +48,12 @@ class Migration(migrations.Migration):
                 ('urlimage', models.URLField(max_length=100)),
                 ('wikipediaLink', models.URLField(max_length=100)),
                 ('status', models.CharField(max_length=20)),
-                ('launches', models.ManyToManyField(to='space_data.launch')),
+                ('launches', models.ManyToManyField(to='Space_X_Data.launch')),
             ],
         ),
         migrations.AddField(
             model_name='launch',
             name='rocket',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='space_data.rockets'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='Space_X_Data.rockets'),
         ),
     ]

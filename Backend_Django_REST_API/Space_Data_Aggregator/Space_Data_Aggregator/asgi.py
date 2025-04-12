@@ -1,5 +1,5 @@
 """
-ASGI config for NASA_SpaceX_Aggregator project.
+ASGI config for Space_Data_Aggregator project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'NASA_SpaceX_Aggregator.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Space_Data_Aggregator.settings')
 
 application = get_asgi_application()

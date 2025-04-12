@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models import ForeignKey
 
 
+
 class Rockets(models.Model):
     id=models.CharField(primary_key=True , max_length=50)
     name=models.CharField(max_length=30)
@@ -22,8 +23,8 @@ class Launch(models.Model):
     id =models.CharField(primary_key=True,max_length=50)
     name =models.CharField(max_length=30)
     flight_number=models.IntegerField()
-    wikipedia_link=models.URLField(max_length=100)
-    details=models.TextField()
+    wikipedia_link=models.URLField(max_length=100,null = True)
+    details=models.TextField(null = True)
     image_link=models.URLField(max_length=100)
     date_first_lunch=models.DateTimeField()
     last_synced = models.DateField(auto_now=True)

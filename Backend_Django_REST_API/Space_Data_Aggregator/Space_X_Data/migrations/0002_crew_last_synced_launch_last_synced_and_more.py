@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('space_data', '0001_initial'),
+        ('Space_X_Data', '0001_initial'),
     ]
 
     operations = [
