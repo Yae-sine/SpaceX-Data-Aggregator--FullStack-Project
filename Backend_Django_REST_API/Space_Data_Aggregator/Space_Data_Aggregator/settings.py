@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'authentication',
-    'core',
     'Space_X_Data',
     'SpaceDevData',
 ]
