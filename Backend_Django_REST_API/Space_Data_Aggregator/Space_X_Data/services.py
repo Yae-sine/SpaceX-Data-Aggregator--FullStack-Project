@@ -8,7 +8,6 @@ django.setup()
 
 from Space_X_Data.models import *
 from datetime import datetime
-
 def rockets_fetch_data():
     res=requests.get("https://api.spacexdata.com/v4/rockets")
 

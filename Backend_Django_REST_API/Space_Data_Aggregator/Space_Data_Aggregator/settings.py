@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'authentication',
     'Space_X_Data',
     'SpaceDevData',
+    'django_apscheduler',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
