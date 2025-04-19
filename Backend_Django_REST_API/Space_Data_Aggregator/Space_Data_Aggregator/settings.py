@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'SpaceDevData',
     'django_apscheduler',
     'rest_framework.authtoken',
+    'user_data',
 ]
 
 MIDDLEWARE = [

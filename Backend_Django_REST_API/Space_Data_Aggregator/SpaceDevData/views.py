@@ -27,3 +27,6 @@ class AstronautViewSet(ReadOnlyModelViewSet):
     lookup_field = 'id'
 
 
+
+
+

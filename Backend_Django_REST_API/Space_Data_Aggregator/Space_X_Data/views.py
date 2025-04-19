@@ -18,3 +18,4 @@ class CrewViewSet(ReadOnlyModelViewSet):
     queryset = Crew.objects.all()
     serializer_class = CrewSerializer
     lookup_field = 'id'
+
