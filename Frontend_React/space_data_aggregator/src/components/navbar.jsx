@@ -90,9 +90,9 @@ const Navbar = () => {
                                           aria-current="page">Home</Link>
                                     <Link to={"/launches"}
                                           className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-indigo-800 hover:bg-opacity-70 hover:text-white">Launches</Link>
-                                    <Link to={"astronauts"}
+                                    <Link to={"/astronauts"}
                                           className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-indigo-800 hover:bg-opacity-70 hover:text-white">Astronauts</Link>
-                                    <Link to={"rockets"}
+                                    <Link to={"/rockets"}
                                           className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-indigo-800 hover:bg-opacity-70 hover:text-white">Rockets</Link>
                                 </div>
                             </div>

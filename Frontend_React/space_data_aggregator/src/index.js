@@ -5,11 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import LaunchesPage from './pages/launches';
+import AstronautsPage from './pages/astronauts';
+import RocketsPage from "./pages/rockets";
 
 const router =createBrowserRouter([
     {path :"/" , element: <App/>},
-    {path:"/launches",element:<LaunchesPage/>},
+    {path:"/launches",element: <LaunchesPage/>},
+    {path:"/astronauts",element: <AstronautsPage/>},
+    {path:"/rockets",element: <RocketsPage/>}
 ])
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
