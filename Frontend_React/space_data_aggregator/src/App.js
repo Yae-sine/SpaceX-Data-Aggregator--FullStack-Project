@@ -1,11 +1,13 @@
 import Navbar from "./components/navbar";
-import LandingPage from "./components/landingPage";
+import Footer from "./components/footer";
+import LandingPage from "./pages/landingPage";
 
 function App() {
     return (
         <div className="App bg-black">
             <Navbar />
             <LandingPage />
+            <Footer />
         </div>
     );
 }

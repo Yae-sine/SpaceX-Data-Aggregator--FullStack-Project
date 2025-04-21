@@ -1,6 +1,7 @@
 import Navbar from "../components/navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Footer from "../components/footer";
 
 function LaunchesPage() {
     const [launches, setLaunches] = useState([]);
@@ -219,6 +220,7 @@ function LaunchesPage() {
                     </div>
                 )}
             </div>
+            <Footer/>
         </div>
     );
 }

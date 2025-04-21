@@ -6,13 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import LaunchesPage from './pages/launches';
 import AstronautsPage from './pages/astronauts';
-import RocketsPage from "./pages/rockets";
+import AuthenticationPage from "./pages/authentication";
+import FavoriteLaunches from "./pages/favoriteLaunches";
 
 const router =createBrowserRouter([
     {path :"/" , element: <App/>},
     {path:"/launches",element: <LaunchesPage/>},
     {path:"/astronauts",element: <AstronautsPage/>},
-    {path:"/rockets",element: <RocketsPage/>}
+    {path:'/authentication',element:<AuthenticationPage/>},
+    {path:"/favoriteLaunches",element:<FavoriteLaunches/>}
 ])
 
 

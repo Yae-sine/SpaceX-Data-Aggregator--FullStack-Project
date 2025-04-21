@@ -1,6 +1,7 @@
 import Navbar from "../components/navbar";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Footer from "../components/footer";
 
 function AstronautsPage() {
     const [astronauts, setAstronauts] = useState([]);
@@ -163,6 +164,7 @@ function AstronautsPage() {
                     </div>
                 )}
             </div>
+            <Footer/>
         </div>
     );
 }
