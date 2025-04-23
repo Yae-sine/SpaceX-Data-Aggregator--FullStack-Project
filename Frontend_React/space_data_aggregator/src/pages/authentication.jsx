@@ -26,7 +26,6 @@ function AuthenticationPage() {
 
         try {
             if (isLogin) {
-                // Login request
                 const response = await axios.post(
                     "http://127.0.0.1:8000/api-authentication/login/",
                     {
@@ -35,16 +34,13 @@ function AuthenticationPage() {
                     }
                 );
 
-                // Store token in localStorage
                 localStorage.setItem("token", response.data.token);
                 setSuccess("Login successful! Redirecting...");
 
-                // Redirect to home page after short delay
                 setTimeout(() => {
                     window.location.href = "/";
                 }, 1500);
             } else {
-                // Register request
                 const response = await axios.post(
                     "http://127.0.0.1:8000/api-authentication/register/",
                     {

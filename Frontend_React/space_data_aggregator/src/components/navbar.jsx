@@ -10,7 +10,6 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Check for token in localStorage to determine authentication status
         const token = localStorage.getItem('token');
         setIsAuthenticated(!!token);
 
@@ -44,14 +43,12 @@ const Navbar = () => {
                 }
             });
 
-            // Clear token from localStorage
             localStorage.removeItem('token');
             setIsAuthenticated(false);
             setIsDropdownOpen(false);
             navigate('/');
         } catch (error) {
             console.error('Logout failed:', error);
-            // Even if API call fails, remove token from localStorage
             localStorage.removeItem('token');
             setIsAuthenticated(false);
             navigate('/');
@@ -146,7 +143,6 @@ const Navbar = () => {
                                         </div>
                                     </button>
 
-                                    {/* Dropdown menu */}
                                     {isDropdownOpen && (
                                         <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-gray-800 border border-gray-700 ring-1 ring-black ring-opacity-5 z-50">
                                             <Link to="/favoriteLaunches" className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white">
@@ -184,20 +180,7 @@ const Navbar = () => {
                               className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-indigo-800 hover:bg-opacity-70 hover:text-white">Launches</Link>
                         <Link to="/astronauts"
                               className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-indigo-800 hover:bg-opacity-70 hover:text-white">Astronauts</Link>
-                        {isAuthenticated && (
-                            <>
-                                <Link to="/favoriteLaunches"
-                                      className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-indigo-800 hover:bg-opacity-70 hover:text-white">
-                                    Favorite Launches
-                                </Link>
-                                <button
-                                    onClick={handleLogout}
-                                    className="block w-full text-left rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-indigo-800 hover:bg-opacity-70 hover:text-white"
-                                >
-                                    Logout
-                                </button>
-                            </>
-                        )}
+
                     </div>
                 </div>
             </nav>

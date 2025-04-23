@@ -7,7 +7,6 @@ const LandingPage = () => {
         <div className="relative min-h-screen bg-black text-white">
 
 
-            {/* Background with parallax effect */}
             <div className="absolute inset-0 z-0">
                 <div
                     className="absolute inset-0 bg-cover bg-fixed bg-center"
@@ -15,7 +14,6 @@ const LandingPage = () => {
                 >
                     <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black"></div>
                 </div>
-                {/* Star particles overlay */}
                 <div className="absolute inset-0 overflow-hidden opacity-70">
                     {[...Array(20)].map((_, i) => (
                         <div
@@ -33,7 +31,6 @@ const LandingPage = () => {
                 </div>
             </div>
 
-            {/* Hero Section */}
             <div className="relative z-10 pt-24 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
                 <div className="text-center max-w-5xl mx-auto">
                     <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-8 tracking-tight">
@@ -54,7 +51,6 @@ const LandingPage = () => {
                     </div>
                 </div>
 
-                {/* Animated scroll indicator */}
                 <div className="absolute bottom-12 left-1/2.5 transform -translate-x-1/2 flex flex-col items-center animate-bounce">
                     <span className="text-gray-400 mb-2 text-sm">Explore More</span>
                     <svg className="w-6 h-6 text-indigo-400" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
@@ -63,7 +59,6 @@ const LandingPage = () => {
                 </div>
             </div>
 
-            {/* Features Section with cards */}
             <div className="relative z-10 py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-black via-gray-900/80 to-black">
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
@@ -72,7 +67,6 @@ const LandingPage = () => {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                        {/* Feature 1 */}
                         <div className="group bg-gradient-to-br from-gray-900 to-indigo-900/30 backdrop-blur-sm p-8 rounded-2xl border border-indigo-900/30 hover:border-indigo-500/50 transition-all duration-500 hover:shadow-xl hover:shadow-indigo-500/20 hover:-translate-y-2">
                             <div className="bg-indigo-900/50 w-16 h-16 rounded-full flex items-center justify-center mb-6 group-hover:bg-indigo-700/50 transition-all duration-300">
                                 <svg className="w-8 h-8 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -89,7 +83,6 @@ const LandingPage = () => {
                             </Link>
                         </div>
 
-                        {/* Feature 2 */}
                         <div className="group bg-gradient-to-br from-gray-900 to-purple-900/30 backdrop-blur-sm p-8 rounded-2xl border border-purple-900/30 hover:border-purple-500/50 transition-all duration-500 hover:shadow-xl hover:shadow-purple-500/20 hover:-translate-y-2">
                             <div className="bg-purple-900/50 w-16 h-16 rounded-full flex items-center justify-center mb-6 group-hover:bg-purple-700/50 transition-all duration-300">
                                 <svg className="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -108,7 +101,6 @@ const LandingPage = () => {
 
                     </div>
 
-                    {/* Stats section */}
                     <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 p-8 bg-gray-900/40 backdrop-blur-sm rounded-2xl border border-gray-800">
                         <div className="text-center">
                             <div className="text-4xl font-bold text-white mb-2">150+</div>
@@ -128,7 +120,6 @@ const LandingPage = () => {
                         </div>
                     </div>
 
-                    {/* Call to action */}
                     <div className="mt-24 text-center bg-gradient-to-r from-indigo-900/30 to-purple-900/30 p-12 rounded-3xl border border-indigo-900/30">
                         <h2 className="text-3xl font-bold text-white mb-6">Ready to begin your space journey?</h2>
                         <p className="text-gray-300 mb-8 max-w-2xl mx-auto">Join our community of space enthusiasts and never miss another launch.</p>

@@ -14,13 +14,11 @@ function AstronautsPage() {
             try {
                 setLoading(true);
 
-                // Fetch both astronauts and agencies in parallel
                 const [astronautsResponse, agenciesResponse] = await Promise.all([
                     axios('http://localhost:8000/api-space-dev/astronauts'),
                     axios('http://localhost:8000/api-space-dev/agencies')
                 ]);
 
-                // Create a lookup map for agencies by ID
                 const agencyMap = {};
                 agenciesResponse.data.forEach(agency => {
                     agencyMap[agency.id] = agency.name;
@@ -71,7 +69,6 @@ function AstronautsPage() {
                             <div key={astronaut.id}
                                  className="bg-gray-800/60 backdrop-blur-sm border border-gray-700 rounded-xl overflow-hidden hover:border-indigo-500/50 hover:shadow-lg hover:shadow-indigo-500/20 transition-all duration-300 group">
                                 <div className="flex flex-col h-full">
-                                    {/* Image section with improved height */}
                                     <div className="relative aspect-[3/4] overflow-hidden">
                                         {astronaut.profile_image ? (
                                             <img
@@ -104,7 +101,6 @@ function AstronautsPage() {
                                         </div>
                                     </div>
 
-                                    {/* Details section */}
                                     <div className="p-5 flex-grow flex flex-col">
                                         <div className="bg-gray-900/50 rounded-lg p-4 mb-4">
                                             <div className="grid grid-cols-2 gap-y-2 text-sm">
