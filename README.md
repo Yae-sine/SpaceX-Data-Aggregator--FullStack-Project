@@ -1,8 +1,8 @@
 # 🚀 Space Launch Tracker
 
-A full-stack web application that allows users to explore, track, and save upcoming and past space launches from agencies like **SpaceX** and **SpaceDev**.
+A full-stack web application that allows users to explore, track, and save upcoming and past space launches from agencies.
 
-Users can log in to **save their favorite launches** for later viewing. The site displays data about **launches, astronauts, and rockets** in a simple and intuitive interface.
+Users can log in to **save their favorite launches** for later viewing. The site displays data about **launches, and astronauts** in a simple and intuitive interface.
 
 ---
 
@@ -13,13 +13,12 @@ Users can log in to **save their favorite launches** for later viewing. The site
 - **Django REST Framework**
 - **Token Authentication**
 - Custom models for:
-  - Saved SpaceX Launches
   - Saved SpaceDev Launches
 
 ### 💻 Frontend
 - **React**
 - **Axios** for API calls
-- **JWT Token** stored in localStorage
+- **(DRF standard Token)** stored in localStorage
 - Conditional rendering based on authentication
 
 ---
@@ -33,6 +32,5 @@ Users can log in to **save their favorite launches** for later viewing. The site
   - Upcoming Launches
   - Past Launches
   - Astronaut Profiles
-  - Rocket Details
 - User Dashboard (preview of saved launches)
 - Logout to invalidate token
