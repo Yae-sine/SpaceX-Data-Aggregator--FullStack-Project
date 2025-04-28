@@ -40,6 +40,9 @@ def process_launch_data(data, is_upcoming):
             mission_type = launch_data.get("mission", {}).get("type", "")
             rocket_name = launch_data.get("rocket", {}).get("configuration", {}).get("name", "")
 
+            # Handle image_url
+            image_url = launch_data.get("image", "")
+
             agency_data = launch_data.get("launch_service_provider", {})
             agency = None
             if agency_data:
@@ -59,7 +62,8 @@ def process_launch_data(data, is_upcoming):
                     "mission_type": mission_type,
                     "rocket_name": rocket_name,
                     "agency": agency,
-                    "is_upcoming": is_upcoming
+                    "is_upcoming": is_upcoming,
+                    "image_url": image_url,
                 }
             )
         except Exception as e:
@@ -109,7 +113,8 @@ def fetch_astronauts():
                             "profile_image": astronaut_data.get("profile_image", ""),
                             "date_of_death": astronaut_data.get("date_of_death"),
                             "biography": astronaut_data.get("bio", ""),
-                            "flights_count": astronaut_data.get("flights_count", 0)
+                            "flights_count": astronaut_data.get("flights_count", 0),
+                            "wiki_link":astronaut_data.get("wiki","")
                         }
                     )
                 except Exception as e:

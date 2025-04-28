@@ -18,6 +18,7 @@ class Astronaut(models.Model):
     nationality = models.CharField(max_length=100, blank=True)
     agency = models.ForeignKey(Agency, on_delete=models.SET_NULL, null=True)
     profile_image = models.URLField(blank=True, null=True)
+    wiki_link=models.URLField(blank=True,null=True)
     date_of_death = models.DateField(null=True, blank=True)
     biography = models.TextField(blank=True, null=True)
     flights_count = models.IntegerField(null=True, blank=True)
@@ -36,3 +37,4 @@ class Launch(models.Model):
     is_upcoming = models.BooleanField(default=True)
     mission_type = models.CharField(max_length=100, blank=True, null=True)
     rocket_name = models.CharField(max_length=255, blank=True, null=True)
+    image_url = models.URLField(blank=True, null=True)

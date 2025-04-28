@@ -19,5 +19,5 @@ class LaunchSerializer(serializers.ModelSerializer):
 
 class CrewSerializer(serializers.ModelSerializer):
     class Meta:
-        model:Crew
-        fields = ['id', 'name', 'agency_name', 'urlimage', 'wikipediaLink', 'status', 'last_synced', 'launches']
+        model=Crew
+        fields = ['id', 'name', 'agency_name', 'urlimage', 'wikipediaLink', 'status', 'last_synced']

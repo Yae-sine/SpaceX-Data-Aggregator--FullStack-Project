@@ -11,11 +11,11 @@ class AgencySerializer(serializers.ModelSerializer):
 class LaunchSerializer(serializers.ModelSerializer):
     class Meta:
         model = Launch
-        fields = ['id', 'name', 'status', 'window_start', 'window_end', 'mission_description', 'mission_type', 'rocket_name', 'agency', 'is_upcoming']
+        fields = ['id', 'name', 'status', 'window_start', 'window_end', 'mission_description', 'mission_type', 'rocket_name', 'agency', 'is_upcoming','image_url']
 
 
 class AstronautSerializer(serializers.ModelSerializer):
     class Meta:
         model = Astronaut
-        fields = ['id', 'name', 'date_of_birth', 'nationality', 'agency', 'profile_image', 'date_of_death', 'biography', 'flights_count']
+        fields = ['id', 'name', 'date_of_birth', 'nationality', 'agency', 'profile_image', 'date_of_death', 'biography', 'flights_count','wiki_link']
 

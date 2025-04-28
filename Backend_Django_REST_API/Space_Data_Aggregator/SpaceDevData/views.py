@@ -12,17 +12,17 @@ class PastLaunchViewSet(ReadOnlyModelViewSet):
     serializer_class = LaunchSerializer
     lookup_field = 'id'
     def get_queryset(self):
-        return Launch.objects.filter(is_upcoming=False)
+        return Launch.objects.filter(is_upcoming=False).order_by('window_start').reverse()
 
 class UpcomingLaunchViewSet(ReadOnlyModelViewSet):
     serializer_class = LaunchSerializer
     lookup_field = 'id'
     def get_queryset(self):
-        return Launch.objects.filter(is_upcoming=True)
+        return Launch.objects.filter(is_upcoming=True).order_by('window_start')
 
 
 class AstronautViewSet(ReadOnlyModelViewSet):
-    queryset = Astronaut.objects.all()
+    queryset = Astronaut.objects.all().order_by('date_of_birth')
     serializer_class = AstronautSerializer
     lookup_field = 'id'
 
