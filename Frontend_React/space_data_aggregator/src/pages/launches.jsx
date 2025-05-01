@@ -53,22 +53,16 @@ function LaunchesPage() {
                     }
                 }
             );
-            const savedLaunchIds = response.data.map(item => item.launch);
-            setSavedLaunches(savedLaunchIds);
+
+            const savedLaunchesMap = response.data.reduce((acc, item) => {
+                acc[item.launch] = item.id;
+                return acc;
+            }, {});
+            setSavedLaunches(savedLaunchesMap);
         } catch (error) {
             console.error('Error fetching saved launches:', error);
         }
     };
-
-
-
-
-    //also the save request is not working
-
-
-
-
-
 
     const handleSaveLaunch = async (launchId) => {
         if (!isAuthenticated) {
@@ -80,28 +74,37 @@ function LaunchesPage() {
             setSavingLaunch(launchId);
             const token = localStorage.getItem('token');
 
-            if (savedLaunches.includes(launchId)) {
+            if (savedLaunches[launchId]) {
+                // DELETE request using the SavedSpaceDevLaunch ID
+                const savedLaunchId = savedLaunches[launchId];
                 await axios.delete(
-                    //There is an error here you need to delete by the id of the SavedLaunch and not LaunchId
-                    `http://127.0.0.1:8000/api-favorite-launch/save-space-dev-launch/${launchId}/`,
+                    `http://127.0.0.1:8000/api-favorite-launch/save-space-dev-launch/${savedLaunchId}/`,
                     {
                         headers: {
                             'Authorization': `Token ${token}`
                         }
                     }
                 );
-                setSavedLaunches(savedLaunches.filter(id => id !== launchId));
+                // Remove the launch from the saved launches map
+                const updatedSavedLaunches = { ...savedLaunches };
+                delete updatedSavedLaunches[launchId];
+                setSavedLaunches(updatedSavedLaunches);
             } else {
-                await axios.post(
+                // POST request to save the launch
+                const response = await axios.post(
                     'http://127.0.0.1:8000/api-favorite-launch/save-space-dev-launch/',
-                    { launch_id : launchId },
+                    { launch: launchId },
                     {
                         headers: {
                             'Authorization': `Token ${token}`
                         }
                     }
                 );
-                setSavedLaunches([...savedLaunches, launchId]);
+                // Add the new saved launch to the saved launches map
+                setSavedLaunches({
+                    ...savedLaunches,
+                    [launchId]: response.data.id // Use the returned SavedSpaceDevLaunch ID
+                });
             }
         } catch (error) {
             console.error('Error saving/unsaving launch:', error);
@@ -205,23 +208,25 @@ function LaunchesPage() {
                                  className="bg-gray-800/60 backdrop-blur-sm border border-gray-700 rounded-xl overflow-hidden hover:border-indigo-500/50 transition-all duration-300 group relative">
 
                                 <button
-                                    onClick={() =>handleSaveLaunch(launch.id)}
+                                    onClick={() => handleSaveLaunch(launch.id)}
                                     className="absolute top-4 right-4 z-10 p-2 rounded-full bg-gray-900/80 hover:bg-indigo-800/80 transition-colors"
-                                    title={savedLaunches.includes(launch.id) ? "Remove from favorites" : "Save to favorites"}
+                                    title={savedLaunches.hasOwnProperty(launch.id) ? "Remove from favorites" : "Save to favorites"}
                                     disabled={savingLaunch === launch.id}
                                 >
                                     {savingLaunch === launch.id ? (
-                                        <div className="animate-spin h-5 w-5 border-2 border-indigo-300 border-t-transparent rounded-full"></div>
+                                        <div
+                                            className="animate-spin h-5 w-5 border-2 border-indigo-300 border-t-transparent rounded-full"></div>
                                     ) : (
                                         <svg
                                             className="h-5 w-5"
-                                            fill={savedLaunches.includes(launch.id) ? "currentColor" : "none"}
+                                            fill={savedLaunches.hasOwnProperty(launch.id) ? "currentColor" : "none"}
                                             stroke="currentColor"
                                             viewBox="0 0 24 24"
                                             strokeWidth="2"
-                                            style={{ color: savedLaunches.includes(launch.id) ? '#818cf8' : '#9ca3af' }}
+                                            style={{color: savedLaunches.hasOwnProperty(launch.id) ? '#818cf8' : '#9ca3af'}}
                                         >
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+                                            <path strokeLinecap="round" strokeLinejoin="round"
+                                                  d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/>
                                         </svg>
                                     )}
                                 </button>
@@ -257,14 +262,16 @@ function LaunchesPage() {
                                             <h2 className="text-xl font-bold text-white group-hover:text-indigo-400 transition-colors">
                                                 {launch.name}
                                             </h2>
-                                            <span className="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">
+                                            <span
+                                                className="bg-indigo-900/50 text-indigo-300 text-xs px-2 py-1 rounded">
                                                 {launch.rocket_name}
                                             </span>
                                         </div>
 
                                         <div className="mt-2 text-gray-400 text-sm">
                                             {launch.mission_type && (
-                                                <span className="inline-block bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs mr-2">
+                                                <span
+                                                    className="inline-block bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs mr-2">
                                                     {launch.mission_type}
                                                 </span>
                                             )}
