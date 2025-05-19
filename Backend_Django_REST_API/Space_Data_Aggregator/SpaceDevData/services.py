@@ -50,7 +50,6 @@ def process_launch_data(data, is_upcoming):
                     id=agency_data.get("id"),
                     defaults={"name": agency_data.get("name", ""), "type": agency_data.get("type", "")}
                 )
-
             Launch.objects.update_or_create(
                 id=launch_id,
                 defaults={
