@@ -61,7 +61,7 @@ function AuthenticationPage() {
         } finally {
             setLoading(false);
         }
-    };    return (        <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-indigo-50/80 to-slate-200 text-gray-900 dark:from-black dark:via-gray-900 dark:to-indigo-950 dark:text-white relative overflow-hidden">
+    };    return (        <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-indigo-300 to-slate-100 text-gray-900 dark:from-black dark:via-gray-900 dark:to-indigo-950 dark:text-white relative overflow-hidden">
             <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-300/40 dark:bg-indigo-800/20 rounded-full filter blur-3xl -translate-y-1/2 translate-x-1/3"></div>
             <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-300/30 dark:bg-blue-900/20 rounded-full filter blur-3xl translate-y-1/3 -translate-x-1/4"></div>
             <Navbar />            <div className="container mx-auto px-4 pt-24 pb-16 flex flex-col items-center justify-center relative z-10">

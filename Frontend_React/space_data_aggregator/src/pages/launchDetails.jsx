@@ -34,17 +34,25 @@ function LaunchDetails() {
         fetchLaunchDetails();
     }, [id]);    if (loading) {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:bg-black">
-                <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-indigo-600 dark:border-indigo-500"></div>
+            <div className="min-h-screen flex flex-col bg-gradient-to-br from-indigo-100 via-indigo-50/80 to-slate-200 dark:from-black dark:via-gray-900 dark:to-indigo-950">
+                <Navbar />
+                <div className="flex-grow flex items-center justify-center">
+                    <div className="relative">
+                        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-indigo-600 dark:border-indigo-500"></div>
+                        <div className="absolute inset-0 rounded-full h-16 w-16 border-2 border-indigo-200 dark:border-indigo-900/30 opacity-30"></div>
+                    </div>
+                </div>
+                <Footer />
             </div>
         );
-    }
-    if (error) {
+    }    if (error) {
         return (
-            <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-black dark:via-gray-900 dark:to-indigo-950 text-red-700 dark:text-red-400">
+            <div className="min-h-screen flex flex-col bg-gradient-to-br from-indigo-100 via-indigo-50/80 to-slate-200 dark:from-black dark:via-gray-900 dark:to-indigo-950 text-red-700 dark:text-red-400">
                 <Navbar />
-                <div className="text-2xl font-bold mt-24">{error}</div>
-                <button className="mt-8 px-4 py-2 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-500 active:bg-indigo-700 dark:bg-indigo-700 dark:hover:bg-indigo-600" onClick={() => navigate(-1)}>Go Back</button>
+                <div className="flex-grow flex flex-col items-center justify-center">
+                    <div className="text-2xl font-bold mb-8">{error}</div>
+                    <button className="px-6 py-3 rounded-lg bg-gradient-to-r from-indigo-600 to-indigo-500 text-white hover:from-indigo-500 hover:to-indigo-400 transition-all duration-300 shadow-md hover:shadow-lg active:shadow-inner dark:from-indigo-700 dark:to-indigo-600 dark:hover:from-indigo-600 dark:hover:to-indigo-500 transform hover:translate-y-[-2px] active:translate-y-0" onClick={() => navigate(-1)}>Go Back</button>
+                </div>
                 <Footer />
             </div>
         );
@@ -53,10 +61,10 @@ function LaunchDetails() {
 
     // Helper for boolean display
     const yesNo = (val) => val ? "Yes" : val === false ? "No" : "Unknown";    return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 text-gray-900 dark:from-black dark:via-gray-900 dark:to-indigo-950 dark:text-white">
+        <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-indigo-50/80 to-slate-200 text-gray-900 dark:from-black dark:via-gray-900 dark:to-indigo-950 dark:text-white flex flex-col">
             <Navbar />
-            <div className="container mx-auto px-4 pt-24 pb-16">
-                <div className="max-w-3xl mx-auto bg-white/90 dark:bg-gray-900/80 rounded-xl shadow-lg p-8 border border-indigo-100 dark:border-gray-700">
+            <div className="container mx-auto px-4 pt-24 pb-16 flex-grow">
+                <div className="max-w-3xl mx-auto bg-indigo-50/95 dark:bg-gray-900/80 rounded-xl shadow-lg p-8 border border-indigo-200 dark:border-gray-700 mb-auto">
                     <div className="flex flex-col md:flex-row gap-8">
                         <div className="md:w-1/3 flex flex-col items-center">
                             <img
@@ -116,8 +124,7 @@ function LaunchDetails() {
                                     <div><span className="font-semibold text-indigo-700 dark:text-indigo-200">Webcast Live:</span> {yesNo(launch.webcast_live)}</div>
                                     {launch.infographic_url && <div><span className="font-semibold text-indigo-700 dark:text-indigo-200">Infographic:</span> <a href={launch.infographic_url} className="underline text-indigo-700 dark:text-indigo-400" target="_blank" rel="noopener noreferrer">View</a></div>}
                                     {launch.program && <div><span className="font-semibold text-indigo-700 dark:text-indigo-200">Program:</span> {launch.program}</div>}
-                                </div>
-                            </div>
+                                </div>                            </div>
                         </div>
                     </div>
                 </div>
