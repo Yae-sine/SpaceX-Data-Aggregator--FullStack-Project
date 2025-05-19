@@ -68,31 +68,21 @@ function FavoriteLaunches() {
         });
     };
 
-    // Dynamic grid classes based on number of launches
-    const getGridClasses = () => {
-        const count = favoriteLaunches.length;
 
-        // Base classes
-        let classes = "flex flex-wrap justify-center gap-6 md:gap-8 max-w-6xl w-full";
-
-        return classes;
-    };
-
-    // Calculate card width based on number of cards
     const getCardWidth = () => {
-        const count = favoriteLaunches.length;
+    const count = favoriteLaunches.length;
 
-        if (count === 1) {
-            return "w-full max-w-md"; // Single card is medium width
-        } else if (count === 2) {
-            return "w-full max-w-sm"; // Two cards are slightly narrower
-        } else {
-            return "w-full sm:max-w-sm"; // Three or more use responsive sizing
-        }
-    };    return (
-        <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-indigo-300 to-slate-100 text-gray-900 dark:from-black dark:via-gray-900 dark:to-indigo-950 dark:text-white">
+    if (count === 1) {
+        return "w-full max-w-md mx-auto"; 
+    } else if (count === 2) {
+        return "w-full sm:w-5/12 max-w-sm"; 
+    } else {
+        return "w-full sm:w-5/12 md:w-3/12 lg:w-3/12 max-w-sm"; 
+    }
+};    return (
+        <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-indigo-300 to-slate-100 text-gray-900 dark:from-black dark:via-gray-900 dark:to-indigo-950 dark:text-white flex flex-col">
             <Navbar />
-            <div className="container mx-auto px-4 pt-24 pb-16 flex-grow flex flex-col items-center">
+            <div className="container mx-auto px-4 pt-24 pb-16  items-center flex-grow">
                 <h1 className="text-4xl font-bold text-center mb-8 text-indigo-900 dark:text-white">Favorite Launches</h1>
 
                 {loading && (
@@ -106,7 +96,7 @@ function FavoriteLaunches() {
                 )}
 
                 {!loading && !error && favoriteLaunches.length === 0 && (
-                    <div className="text-center text-indigo-400 dark:text-gray-400 py-16 bg-white/80 dark:bg-gray-800/40 rounded-xl shadow-sm border border-indigo-100 dark:border-gray-700 px-8">
+                    <div className="text-center text-indigo-400 dark:text-gray-400 self-center py-16 bg-white/80 dark:bg-gray-800/40 rounded-xl shadow-sm border border-indigo-100 dark:border-gray-700 px-8">
                         <svg className="mx-auto h-20 w-20 text-indigo-300 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -114,7 +104,7 @@ function FavoriteLaunches() {
                         <p className="mt-2 text-indigo-600 dark:text-gray-400">You haven't saved any launches to your favorites yet.</p>
                     </div>
                 )}                {!loading && !error && favoriteLaunches.length > 0 && (
-                    <div className={getGridClasses()}>
+                    <div className="flex flex-wrap justify-center gap-6 md:gap-8 mx-auto">
                         {favoriteLaunches.map((launch, index) => (
                             <div
                                 key={launch?.id || index}

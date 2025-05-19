@@ -61,7 +61,7 @@ function LaunchDetails() {
 
     // Helper for boolean display
     const yesNo = (val) => val ? "Yes" : val === false ? "No" : "Unknown";    return (
-        <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-indigo-50/80 to-slate-200 text-gray-900 dark:from-black dark:via-gray-900 dark:to-indigo-950 dark:text-white flex flex-col">
+        <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-indigo-300 to-slate-100 text-gray-900 dark:from-black dark:via-gray-900 dark:to-indigo-950 dark:text-white flex flex-col">
             <Navbar />
             <div className="container mx-auto px-4 pt-24 pb-16 flex-grow">
                 <div className="max-w-3xl mx-auto bg-indigo-50/95 dark:bg-gray-900/80 rounded-xl shadow-lg p-8 border border-indigo-200 dark:border-gray-700 mb-auto">
