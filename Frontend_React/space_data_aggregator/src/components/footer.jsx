@@ -3,25 +3,25 @@ import React from "react";
 function Footer(){
     return (
       <>
-      <footer className="relative z-10 bg-gray-900 py-4 border-t border-gray-800">
+      <footer className="relative z-10 bg-indigo-900 dark:bg-gray-900 py-4 border-t border-indigo-800 dark:border-gray-800 shadow-lg shadow-indigo-900/20 dark:shadow-black/30 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
               <div
-                  className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-600">
+                  className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-300 to-indigo-400 dark:from-blue-400 dark:to-indigo-600">
                   SpaceTracker
               </div>
-              <p className="text-gray-400 mt-2">Exploring the cosmos, one launch at a time.</p>
+              <p className="text-indigo-200 dark:text-gray-400 mt-2">Exploring the cosmos, one launch at a time.</p>
           </div>
           <div className="flex space-x-6">
               <a href="https://www.linkedin.com/in/yassine-aboulhaj/"
-                 className="text-gray-400 hover:text-white transition-colors">
+                 className="text-indigo-300 hover:text-white dark:text-gray-400 dark:hover:text-white transition-colors">
                   <span className="sr-only">LinkedIn</span>
                   <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                       <path
                           d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                   </svg>
               </a>
-              <a href="https://github.com/Yae-sine" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://github.com/Yae-sine" className="text-indigo-300 hover:text-white dark:text-gray-400 dark:hover:text-white transition-colors">
                   <span className="sr-only">GitHub</span>
                   <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                       <path fillRule="evenodd"
@@ -31,7 +31,7 @@ function Footer(){
               </a>
           </div>
       </div>
-      <div className="mt-8 text-center text-sm text-gray-500">
+      <div className="mt-8 text-center text-sm text-indigo-200/70 dark:text-gray-500">
           <p>© 2025 SpaceTracker. All rights reserved.</p>
       </div>
       </footer>

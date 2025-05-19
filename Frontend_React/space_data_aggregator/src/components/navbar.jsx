@@ -9,6 +9,22 @@ const Navbar = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const navigate = useNavigate();
 
+    const [theme, setTheme] = useState(() => {
+        if (typeof window !== 'undefined') {
+            return localStorage.getItem('theme') || 'dark';
+        }
+        return 'dark';
+    });
+
+    useEffect(() => {
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+        localStorage.setItem('theme', theme);
+    }, [theme]);
+
     useEffect(() => {
         const token = localStorage.getItem('token');
         setIsAuthenticated(!!token);
@@ -56,8 +72,8 @@ const Navbar = () => {
     };
 
     const navbarClass = scrolled
-        ? "bg-gray-900 shadow-lg shadow-black/30 backdrop-blur-md"
-        : "bg-gray-900/95 backdrop-blur-md";
+        ? "bg-indigo-900 dark:bg-gray-900 shadow-lg shadow-indigo-900/20 dark:shadow-black/30 backdrop-blur-md"
+        : "bg-indigo-900/95 dark:bg-gray-900/95 backdrop-blur-md";
 
     return (
         <>
@@ -127,7 +143,7 @@ const Navbar = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="flex items-center">
+                        <div className="flex items-center gap-4 ml-auto">
                             {isAuthenticated ? (
                                 <div className="relative">
                                     <button
@@ -145,6 +161,9 @@ const Navbar = () => {
 
                                     {isDropdownOpen && (
                                         <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-gray-800 border border-gray-700 ring-1 ring-black ring-opacity-5 z-50">
+                                            <Link to="/profile" className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white">
+                                                Profile
+                                            </Link>
                                             <Link to="/favoriteLaunches" className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white">
                                                 Favorite Launches
                                             </Link>
@@ -168,6 +187,21 @@ const Navbar = () => {
                                     </button>
                                 </Link>
                             )}
+                            <button
+                                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                                className="p-2 rounded-full bg-indigo-800 hover:bg-indigo-700 transition-colors text-white dark:text-yellow-300 shadow-inner"
+                                title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+                            >
+                                {theme === 'dark' ? (
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1.5M12 19.5V21M4.219 4.219l1.061 1.061M18.72 18.72l1.06 1.06M3 12h1.5M19.5 12H21M4.219 19.781l1.061-1.061M18.72 5.28l1.06-1.06M12 7.5A4.5 4.5 0 1112 16.5a4.5 4.5 0 010-9z" />
+                                    </svg>
+                                ) : (
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0112 21.75c-5.385 0-9.75-4.365-9.75-9.75 0-4.28 2.712-7.92 6.548-9.21.5-.17 1.052.03 1.32.488.267.459.12 1.045-.326 1.32A7.501 7.501 0 0012 19.5c2.485 0 4.687-1.21 6.208-3.09.33-.41.946-.482 1.32-.326.459.267.658.82.488 1.32z" />
+                                    </svg>
+                                )}
+                            </button>
                         </div>
                     </div>
                 </div>

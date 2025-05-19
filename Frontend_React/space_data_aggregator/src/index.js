@@ -8,13 +8,17 @@ import LaunchesPage from './pages/launches';
 import AstronautsPage from './pages/astronauts';
 import AuthenticationPage from "./pages/authentication";
 import FavoriteLaunches from "./pages/favoriteLaunches";
+import ProfilePage from './pages/ProfilePage';
+import LaunchDetails from './pages/launchDetails';
 
 const router =createBrowserRouter([
     {path :"/" , element: <App/>},
     {path:"/launches",element: <LaunchesPage/>},
+    {path:"/launches/:id",element: <LaunchDetails/>},
     {path:"/astronauts",element: <AstronautsPage/>},
     {path:'/authentication',element:<AuthenticationPage/>},
-    {path:"/favoriteLaunches",element:<FavoriteLaunches/>}
+    {path:"/favoriteLaunches",element:<FavoriteLaunches/>},
+    {path:"/profile",element:<ProfilePage/>}
 ])
 
 

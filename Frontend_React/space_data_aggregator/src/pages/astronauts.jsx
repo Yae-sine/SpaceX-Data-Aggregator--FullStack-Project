@@ -37,37 +37,34 @@ function AstronautsPage() {
 
         fetchData();
     }, []);
-
-
     return (
-        <div className="AstronautsPage min-h-screen bg-gradient-to-br from-black via-gray-900 to-indigo-950">
+        <div className="AstronautsPage min-h-screen bg-gradient-to-br from-indigo-100 via-indigo-50/80 to-slate-200 text-gray-900 dark:from-black dark:via-gray-900 dark:to-indigo-950 dark:text-white">
             <Navbar/>
             <div className="container mx-auto px-4 pt-24 pb-16">
-                <h1 className="text-4xl font-bold text-white text-center mb-8">Astronauts</h1>
+                <h1 className="text-4xl font-bold text-center mb-8 text-indigo-800 dark:text-white">Astronauts</h1>
 
                 {loading && (
                     <div className="flex justify-center items-center h-64">
-                        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-indigo-500"></div>
+                        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-indigo-600 dark:border-indigo-500"></div>
                     </div>
                 )}
 
                 {error && (
-                    <div className="bg-red-900/30 border border-red-500 text-red-200 p-4 rounded-lg text-center">
+                    <div className="bg-red-50 border-2 border-red-200 text-red-700 p-4 rounded-lg text-center shadow-sm dark:bg-red-900/30 dark:border-red-500 dark:text-red-200">
                         {error}
                     </div>
                 )}
 
                 {!loading && !error && astronauts.length === 0 && (
-                    <div className="text-center text-gray-400 py-16">
+                    <div className="text-center text-gray-500 dark:text-gray-400 py-16">
                         No astronauts found
                     </div>
                 )}
 
                 {!loading && !error && astronauts.length > 0 && (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {astronauts.map(astronaut => (
-                            <div key={astronaut.id}
-                                 className="bg-gray-800/60 backdrop-blur-sm border border-gray-700 rounded-xl overflow-hidden hover:border-indigo-500/50 hover:shadow-lg hover:shadow-indigo-500/20 transition-all duration-300 group">
+                        {astronauts.map(astronaut => (                            <div key={astronaut.id}
+                                 className="bg-indigo-50/95 shadow-lg dark:bg-gray-800/60 border border-indigo-200 dark:border-gray-700 rounded-xl overflow-hidden hover:border-indigo-300 dark:hover:border-indigo-500/50 hover:shadow-xl transition-all duration-300 group">
                                 <div className="flex flex-col h-full">
                                     <div className="relative aspect-[3/4] overflow-hidden">
                                         {astronaut.profile_image ? (
@@ -82,66 +79,63 @@ function AstronautsPage() {
                                             />
                                         ) : (
                                             <div
-                                                className="h-full w-full bg-gradient-to-r from-gray-900 to-indigo-900 flex items-center justify-center">
-                                                <svg className="w-20 h-20 text-indigo-300/50" fill="none"
+                                                className="h-full w-full bg-gradient-to-r from-indigo-100 to-purple-100 dark:from-gray-900 dark:to-indigo-900 flex items-center justify-center">
+                                                <svg className="w-20 h-20 text-indigo-400 dark:text-indigo-300/50" fill="none"
                                                      stroke="currentColor" viewBox="0 0 24 24">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"
                                                           d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
                                                 </svg>
                                             </div>
-                                        )}
-                                        <div
-                                            className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent px-5 py-4">
-                                            <h2 className="text-2xl font-bold text-white group-hover:text-indigo-300 transition-colors">{astronaut.name}</h2>
+                                        )}                                        <div
+                                            className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-indigo-800/90 dark:from-black to-transparent px-5 py-4">
+                                            <h2 className="text-2xl font-bold text-white dark:text-white group-hover:text-indigo-100 dark:group-hover:text-indigo-300 transition-colors">{astronaut.name}</h2>
                                             <div className="flex items-center">
-            <span className="px-2 py-1 bg-indigo-900/60 rounded-md text-indigo-300 text-sm">
-                {agencies[astronaut.agency] || 'Independent'}
-            </span>
+                                                <span className="px-2 py-1 bg-indigo-700/80 dark:bg-indigo-900/60 rounded-md text-indigo-100 dark:text-indigo-300 text-sm font-medium">
+                                                    {agencies[astronaut.agency] || 'Independent'}
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div className="p-5 flex-grow flex flex-col">
-                                        <div className="bg-gray-900/50 rounded-lg p-4 mb-4">
+                                        <div className="bg-indigo-50 dark:bg-gray-900/50 rounded-lg p-4 mb-4 shadow-inner">
                                             <div className="grid grid-cols-2 gap-y-2 text-sm">
-                                                <span className="text-gray-400">Nationality:</span>
-                                                <span
-                                                    className="text-white text-right">{astronaut.nationality || 'Unknown'}</span>
+                                                <span className="text-indigo-700 dark:text-gray-400 font-medium">Nationality:</span>
+                                                <span className="text-gray-800 dark:text-white text-right">{astronaut.nationality || 'Unknown'}</span>
 
-                                                <span className="text-gray-400">Born:</span>
-                                                <span className="text-white text-right">
-                                {astronaut.date_of_birth
-                                    ? new Date(astronaut.date_of_birth).toLocaleDateString('en-US', {
-                                        year: 'numeric',
-                                        month: 'short',
-                                        day: 'numeric'
-                                    })
-                                    : 'Unknown'}
-                            </span>
+                                                <span className="text-indigo-700 dark:text-gray-400 font-medium">Born:</span>
+                                                <span className="text-gray-800 dark:text-white text-right">
+                                                    {astronaut.date_of_birth
+                                                        ? new Date(astronaut.date_of_birth).toLocaleDateString('en-US', {
+                                                            year: 'numeric',
+                                                            month: 'short',
+                                                            day: 'numeric'
+                                                        })
+                                                        : 'Unknown'}
+                                                </span>
 
-                                                <span className="text-gray-400">Flights:</span>
-                                                <span className="text-white text-right font-bold">
-                                {astronaut.flights_count ? (
-                                    <span
-                                        className="inline-flex items-center justify-center bg-indigo-900/60 w-6 h-6 rounded-full">
-                                        {astronaut.flights_count}
-                                    </span>
-                                ) : '0'}
-                            </span>
+                                                <span className="text-indigo-700 dark:text-gray-400 font-medium">Flights:</span>
+                                                <span className="text-indigo-600 dark:text-indigo-300 text-right font-bold">
+                                                    {astronaut.flights_count ? (
+                                                        <span className="inline-flex items-center justify-center bg-indigo-100 dark:bg-indigo-900/60 w-6 h-6 rounded-full">
+                                                            {astronaut.flights_count}
+                                                        </span>
+                                                    ) : '0'}
+                                                </span>
                                             </div>
                                         </div>
 
-                                        <p className="text-gray-300 line-clamp-3 flex-grow">
+                                        <p className="text-gray-700 dark:text-gray-300 line-clamp-3 flex-grow">
                                             {astronaut.biography || "No biographical information available."}
                                         </p>
 
                                         {astronaut.wiki_link && (
-                                            <div className="mt-4 pt-4 border-t border-gray-700">
+                                            <div className="mt-4 pt-4 border-t border-indigo-100 dark:border-gray-700">
                                                 <a
                                                     href={astronaut.wiki_link}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="inline-flex items-center bg-indigo-700 hover:bg-indigo-600 text-white px-4 py-2 rounded-md transition-colors duration-300 w-full justify-center"
+                                                    className="inline-flex items-center bg-indigo-600 dark:bg-indigo-700 hover:bg-indigo-500 dark:hover:bg-indigo-600 text-white px-4 py-2 rounded-md transition-colors duration-300 w-full justify-center shadow-sm"
                                                 >
                                                     <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor"
                                                          viewBox="0 0 24 24">
