@@ -9,8 +9,6 @@ class Agency(models.Model):
     description = models.TextField(blank=True, null=True)
 
 
-
-
 class Astronaut(models.Model):
     id = models.IntegerField(primary_key=True)
     name = models.CharField(max_length=255)
@@ -22,8 +20,6 @@ class Astronaut(models.Model):
     date_of_death = models.DateField(null=True, blank=True)
     biography = models.TextField(blank=True, null=True)
     flights_count = models.IntegerField(null=True, blank=True)
-
-
 
 
 class Launch(models.Model):
@@ -38,3 +34,24 @@ class Launch(models.Model):
     mission_type = models.CharField(max_length=100, blank=True, null=True)
     rocket_name = models.CharField(max_length=255, blank=True, null=True)
     image_url = models.URLField(blank=True, null=True)
+
+    # New fields for detailed launch info
+    pad_name = models.CharField(max_length=255, blank=True, null=True)
+    pad_latitude = models.FloatField(blank=True, null=True)
+    pad_longitude = models.FloatField(blank=True, null=True)
+    pad_location_name = models.CharField(max_length=255, blank=True, null=True)
+    pad_wiki_url = models.URLField(blank=True, null=True)
+    pad_map_url = models.URLField(blank=True, null=True)
+    pad_image_url = models.URLField(blank=True, null=True)
+
+    mission_orbit = models.CharField(max_length=100, blank=True, null=True)
+    probability = models.IntegerField(blank=True, null=True)
+    weather_concerns = models.CharField(max_length=255, blank=True, null=True)
+    failreason = models.TextField(blank=True, null=True)
+    hashtag = models.CharField(max_length=100, blank=True, null=True)
+    webcast_live = models.BooleanField(default=False)
+    infographic_url = models.URLField(blank=True, null=True)
+    program = models.CharField(max_length=255, blank=True, null=True)
+
+    def __str__(self):
+        return self.name

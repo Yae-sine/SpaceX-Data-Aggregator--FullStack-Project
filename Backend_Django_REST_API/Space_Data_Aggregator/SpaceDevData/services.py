@@ -2,6 +2,7 @@ import requests
 from django.utils.timezone import make_aware
 from datetime import datetime
 import os
+
 import django
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Space_Data_Aggregator.settings')
@@ -36,12 +37,29 @@ def process_launch_data(data, is_upcoming):
             status = launch_data.get("status", {}).get("name", "")
             window_start = make_aware(datetime.strptime(launch_data.get("window_start"), '%Y-%m-%dT%H:%M:%SZ'))
             window_end = make_aware(datetime.strptime(launch_data.get("window_end"), '%Y-%m-%dT%H:%M:%SZ'))
-            mission_description = launch_data.get("mission", {}).get("description", "")
-            mission_type = launch_data.get("mission", {}).get("type", "")
+            mission = launch_data.get("mission", {})
+            mission_description = mission.get("description", "")
+            mission_type = mission.get("type", "")
+            mission_orbit = mission.get("orbit", {}).get("name", "")
             rocket_name = launch_data.get("rocket", {}).get("configuration", {}).get("name", "")
-
-            # Handle image_url
             image_url = launch_data.get("image", "")
+            infographic_url = launch_data.get("infographic", "")
+            probability = launch_data.get("probability")
+            weather_concerns = launch_data.get("weather_concerns", "")
+            failreason = launch_data.get("failreason", "")
+            hashtag = launch_data.get("hashtag", "")
+            webcast_live = launch_data.get("webcast_live", False)
+            program = ", ".join([p.get("name", "") for p in launch_data.get("program", [])]) if launch_data.get("program") else ""
+
+            # Pad/location details
+            pad = launch_data.get("pad", {})
+            pad_name = pad.get("name", "")
+            pad_latitude = pad.get("latitude")
+            pad_longitude = pad.get("longitude")
+            pad_location_name = pad.get("location", {}).get("name", "")
+            pad_wiki_url = pad.get("wiki_url", "")
+            pad_map_url = pad.get("map_url", "")
+            pad_image_url = pad.get("image", "")
 
             agency_data = launch_data.get("launch_service_provider", {})
             agency = None
@@ -63,6 +81,21 @@ def process_launch_data(data, is_upcoming):
                     "agency": agency,
                     "is_upcoming": is_upcoming,
                     "image_url": image_url,
+                    "pad_name": pad_name,
+                    "pad_latitude": pad_latitude,
+                    "pad_longitude": pad_longitude,
+                    "pad_location_name": pad_location_name,
+                    "pad_wiki_url": pad_wiki_url,
+                    "pad_map_url": pad_map_url,
+                    "pad_image_url": pad_image_url,
+                    "mission_orbit": mission_orbit,
+                    "probability": probability,
+                    "weather_concerns": weather_concerns,
+                    "failreason": failreason,
+                    "hashtag": hashtag,
+                    "webcast_live": webcast_live,
+                    "infographic_url": infographic_url,
+                    "program": program,
                 }
             )
         except Exception as e:
