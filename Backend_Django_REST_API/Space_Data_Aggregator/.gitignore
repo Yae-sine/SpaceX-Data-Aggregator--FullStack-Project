@@ -21,8 +21,9 @@ yarn-error.log*
 
 # IDEs and Editors
 .vscode/
-.idea/
+
 ../.idea/
+../../.idea/
 *.swp
 *.swo
 
@@ -31,5 +32,5 @@ yarn-error.log*
 Thumbs.db
 
 
-.db.sqlite3
+db.sqlite3
 
