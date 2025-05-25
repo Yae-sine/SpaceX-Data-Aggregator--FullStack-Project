@@ -23,14 +23,16 @@ Users can log in to **save their favorite launches** for later viewing. The site
 
 ---
 
-## 🔐 Features
+## 🌟 Features
 
 - User Registration & Login
 - Token-based Authentication (DRF Auth)
-- Save/Unsave Launches (per user)
-- View:
-  - Upcoming Launches
-  - Past Launches
-  - Astronaut Profiles
-- User Dashboard (preview of saved launches)
-- Logout to invalidate token
+- Save and Unsave Launches (per user)
+- View Upcoming Launches
+- View Past Launches
+- Browse Astronaut Profiles
+- User Dashboard to preview saved launches
+- Logout functionality to invalidate tokens
+- Dynamic and responsive user interface
+- Real-time updates for space data
+- Cross-platform compatibility for modern browsers and devices

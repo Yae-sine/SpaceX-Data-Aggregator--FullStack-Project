@@ -11,7 +11,6 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('SpaceDevData', '0001_initial'),
-        ('Space_X_Data', '0003_alter_launch_details_alter_launch_wikipedia_link'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
@@ -27,17 +26,5 @@ class Migration(migrations.Migration):
             options={
                 'constraints': [models.UniqueConstraint(fields=('user', 'launch'), name='unique_user_spaceDevLaunch')],
             },
-        ),
-        migrations.CreateModel(
-            name='SavedSpaceXLaunch',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('saved_at', models.DateTimeField(auto_now_add=True)),
-                ('launch', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='saved_SpaceX_by_users', to='Space_X_Data.launch')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='saved_SpaceX_launches', to=settings.AUTH_USER_MODEL)),
-            ],
-            options={
-                'constraints': [models.UniqueConstraint(fields=('user', 'launch'), name='unique_user_spaceXLaunch')],
-            },
-        ),
+        )
     ]

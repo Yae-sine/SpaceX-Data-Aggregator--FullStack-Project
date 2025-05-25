@@ -38,9 +38,9 @@ function AstronautsPage() {
         fetchData();
     }, []);
     return (
-        <div className="AstronautsPage min-h-screen bg-gradient-to-br from-indigo-100 via-indigo-300 to-slate-100 text-gray-900 dark:from-black dark:via-gray-900 dark:to-indigo-950 dark:text-white">
+        <div className="AstronautsPage min-h-screen flex flex-col bg-gradient-to-br from-indigo-100 via-indigo-300 to-slate-100 text-gray-900 dark:from-black dark:via-gray-900 dark:to-indigo-950 dark:text-white">
             <Navbar/>
-            <div className="container mx-auto px-4 pt-24 pb-16">
+            <div className="container mx-auto px-4 pt-24 pb-16 flex-grow">
                 <h1 className="text-4xl font-bold text-center mb-8 text-indigo-800 dark:text-white">Astronauts</h1>
 
                 {loading && (

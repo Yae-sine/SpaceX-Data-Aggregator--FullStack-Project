@@ -35,7 +35,6 @@ class Launch(models.Model):
     rocket_name = models.CharField(max_length=255, blank=True, null=True)
     image_url = models.URLField(blank=True, null=True)
 
-    # New fields for detailed launch info
     pad_name = models.CharField(max_length=255, blank=True, null=True)
     pad_latitude = models.FloatField(blank=True, null=True)
     pad_longitude = models.FloatField(blank=True, null=True)
