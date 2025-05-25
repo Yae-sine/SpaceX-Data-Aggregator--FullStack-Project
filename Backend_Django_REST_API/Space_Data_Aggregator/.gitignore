@@ -31,5 +31,5 @@ yarn-error.log*
 Thumbs.db
 
 
-db.sqlite3
+.db.sqlite3
 
